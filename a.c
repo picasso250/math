@@ -4,7 +4,7 @@
 #define DEBUG 1
 
 #define choice_push(a,b,c,d,e) choice[0]=a;choice[1]=b;choice[2]=c;choice[3]=d;choice[4]=e
-#define N 100
+#define N 50
 #define PC 5
 
 int sum(int choice[])
@@ -59,70 +59,68 @@ int main() {
 	int total, n, a, b, c, d, e;
 	int left, left_b, left_c, left_d, left_e;
 	int mmax, mmin;
-	int choice[PC];
+	int choice[PC]; // {a,b,c,d,e}
 	total = 0;
-	for (a = 1; a < N; ++a)
+	int left_table[PC];
+	left_table[0] = N;
+	for (choice[0] = 1; choice[0] < N; ++choice[0])
 	{
-		left_b = N - a;
-		// print 'A take',a,', left',left
-		for (b = 1; b <= left_b; ++b)
+		left_b = N - choice[0];
+		// print 'A take',choice[0],', left',left
+		for (choice[1] = 1; choice[1] <= left_b; ++choice[1])
 		{
-			left_c = N - a - b;
-			for (c = 1; c <= left_c; ++c)
+			left_c = N - choice[0] - choice[1];
+			for (choice[2] = 1; choice[2] <= left_c; ++choice[2])
 			{
-				left_d = N - a - b - c;
-				for (d = 1; d <= left_d; ++d)
+				left_d = N - choice[0] - choice[1] - choice[2];
+				for (choice[3] = 1; choice[3] <= left_d; ++choice[3])
 				{
-					left_e = N - a - b - c - d;
-					for (e = 1; e <= left_e; ++e)
+					left_e = N - choice[0] - choice[1] - choice[2] - choice[3];
+					for (choice[4] = 1; choice[4] <= left_e; ++choice[4])
 					{
-						choice_push(a,b,c,d,e);
 						// print_choice(choice);
 						assert(sum(choice) <= N);
-						// if a > 88 || b > 88:
-							// print choice
 						mmax = MAX(choice);
 						mmin = MIN(choice);
-						// printf("max %d, min %d\n", mmax, mmin);
-						if (a == mmax || a == mmin)
+						if (choice[0] == mmax || choice[0] == mmin)
 						{
 							// pass
 						}
 						else
 						{
-							table[0][N][a] += 1;
+							table[0][N][choice[0]] += 1;
 						}
-						if (b == mmax || b == mmin)
+						if (choice[1] == mmax || choice[1] == mmin)
 						{
 							/* code */
 						}
 						else
 						{
-							table[1][left_b][b] += 1;
+							table[1][left_b][choice[1]] += 1;
 						}
-						if (c == mmax || c == mmin)
+						if (choice[2] == mmax || choice[2] == mmin)
 						{
 							/* code */
 						}
 						else
 						{
-							table[2][left_c][c] += 1;
+							table[2][left_c][choice[2]] += 1;
 						}
-						if (d == mmax || d == mmin)
+						if (choice[3] == mmax || choice[3] == mmin)
 						{
 							/* code */
 						}
 						else
 						{
-							table[3][left_d][d] += 1;
+							table[3][left_d][choice[3]] += 1;
 						}
-						if (e == mmax || e == mmin)
+						if (choice[4] == mmax || choice[4] == mmin)
 						{
 							/* code */
 						}
 						else
 						{
-							table[4][left_e][e] += 1;
+							table[4][left_e][choice[4]] += 1;
 						}
 						total += 1;
 					}
