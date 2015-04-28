@@ -65,18 +65,18 @@ int main() {
 	left_table[0] = N;
 	for (choice[0] = 1; choice[0] < N; ++choice[0])
 	{
-		left_b = N - choice[0];
+		left_table[1] = N - choice[0];
 		// print 'A take',choice[0],', left',left
-		for (choice[1] = 1; choice[1] <= left_b; ++choice[1])
+		for (choice[1] = 1; choice[1] <= left_table[1]; ++choice[1])
 		{
-			left_c = N - choice[0] - choice[1];
-			for (choice[2] = 1; choice[2] <= left_c; ++choice[2])
+			left_table[2] = N - choice[0] - choice[1];
+			for (choice[2] = 1; choice[2] <= left_table[2]; ++choice[2])
 			{
-				left_d = N - choice[0] - choice[1] - choice[2];
-				for (choice[3] = 1; choice[3] <= left_d; ++choice[3])
+				left_table[3] = N - choice[0] - choice[1] - choice[2];
+				for (choice[3] = 1; choice[3] <= left_table[3]; ++choice[3])
 				{
-					left_e = N - choice[0] - choice[1] - choice[2] - choice[3];
-					for (choice[4] = 1; choice[4] <= left_e; ++choice[4])
+					left_table[4] = N - choice[0] - choice[1] - choice[2] - choice[3];
+					for (choice[4] = 1; choice[4] <= left_table[4]; ++choice[4])
 					{
 						// print_choice(choice);
 						assert(sum(choice) <= N);
@@ -96,7 +96,7 @@ int main() {
 						}
 						else
 						{
-							table[1][left_b][choice[1]] += 1;
+							table[1][left_table[1]][choice[1]] += 1;
 						}
 						if (choice[2] == mmax || choice[2] == mmin)
 						{
@@ -104,7 +104,7 @@ int main() {
 						}
 						else
 						{
-							table[2][left_c][choice[2]] += 1;
+							table[2][left_table[2]][choice[2]] += 1;
 						}
 						if (choice[3] == mmax || choice[3] == mmin)
 						{
@@ -112,7 +112,7 @@ int main() {
 						}
 						else
 						{
-							table[3][left_d][choice[3]] += 1;
+							table[3][left_table[3]][choice[3]] += 1;
 						}
 						if (choice[4] == mmax || choice[4] == mmin)
 						{
@@ -120,7 +120,7 @@ int main() {
 						}
 						else
 						{
-							table[4][left_e][choice[4]] += 1;
+							table[4][left_table[4]][choice[4]] += 1;
 						}
 						total += 1;
 					}
