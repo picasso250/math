@@ -82,45 +82,17 @@ int main() {
 						assert(sum(choice) <= N);
 						mmax = MAX(choice);
 						mmin = MIN(choice);
-						if (choice[0] == mmax || choice[0] == mmin)
+						for (int person = 0; person < PC; ++person)
 						{
-							// pass
-						}
-						else
-						{
-							table[0][N][choice[0]] += 1;
-						}
-						if (choice[1] == mmax || choice[1] == mmin)
-						{
-							/* code */
-						}
-						else
-						{
-							table[1][left_table[1]][choice[1]] += 1;
-						}
-						if (choice[2] == mmax || choice[2] == mmin)
-						{
-							/* code */
-						}
-						else
-						{
-							table[2][left_table[2]][choice[2]] += 1;
-						}
-						if (choice[3] == mmax || choice[3] == mmin)
-						{
-							/* code */
-						}
-						else
-						{
-							table[3][left_table[3]][choice[3]] += 1;
-						}
-						if (choice[4] == mmax || choice[4] == mmin)
-						{
-							/* code */
-						}
-						else
-						{
-							table[4][left_table[4]][choice[4]] += 1;
+							int c = choice[person];
+							if (c == mmax || c == mmin)
+							{
+								/* code */
+							}
+							else
+							{
+								table[person][left_table[person]][c] += 1;
+							}
 						}
 						total += 1;
 					}
