@@ -131,7 +131,7 @@ int main() {
 		}
 	}
 	printf("%d\n", total);
-	for (int person = 0; person < N; ++person)
+	for (int person = 0; person < PC; ++person)
 	{
 		printf("for %c\n", 'A'+person);
 		for (int left = 0; left < N; ++left)
@@ -142,7 +142,7 @@ int main() {
 				int live = table[person][left][choice];
 				if (live > 0)
 				{
-					// printf("for %c, left %d, when %d\t%d\t%.2f%%\n", 'A'+person, left, choice, live, 1.0*live/total*100);
+					printf("for %c, left %d, when %d\t%d\t%.2f%%\n", 'A'+person, left, choice, live, 1.0*live/total*100);
 				}
 			}
 		}
@@ -173,14 +173,14 @@ int main() {
 	printf("B will chose %d\n", max_choice);
 	last_choice = max_choice;
 	max = 0;
-	for (int choice = 0; choice < N; ++choice)
-	{
-		int live = table[2][N - last_choice][choice];
-		if (live > max)
-		{
-			max_choice = choice;
-			max = live;
-		}
-	}
-	printf("C will chose %d\n", max_choice);
+	// for (int choice = 0; choice < N; ++choice)
+	// {
+	// 	int live = table[2][N - last_choice][choice];
+	// 	if (live > max)
+	// 	{
+	// 		max_choice = choice;
+	// 		max = live;
+	// 	}
+	// }
+	// printf("C will chose %d\n", max_choice);
 }
