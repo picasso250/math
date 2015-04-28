@@ -40,11 +40,11 @@ int MAX(int choice[])
 	}
 	return m;
 }
-int init_table(int table[PC][N][N])
+int init_table(int table[PC][N+1][N])
 {
 	for (int p = 0; p < PC; ++p)
 	{
-		for (int i = 0; i < N; ++i)
+		for (int i = 0; i <= N; ++i)
 		{
 			for (int j = 0; j < N; ++j)
 			{
@@ -54,7 +54,7 @@ int init_table(int table[PC][N][N])
 	}
 }
 int main() {
-	int table[PC][N][N];
+	int table[PC][N+1][N];
 	init_table(table);
 	int total, n, a, b, c, d, e;
 	int left, left_b, left_c, left_d, left_e;
@@ -78,7 +78,7 @@ int main() {
 					{
 						choice_push(a,b,c,d,e);
 						// print_choice(choice);
-						assert(sum(choice) <= 100);
+						assert(sum(choice) <= N);
 						// if a > 88 || b > 88:
 							// print choice
 						mmax = MAX(choice);
@@ -90,7 +90,7 @@ int main() {
 						}
 						else
 						{
-							table[0][0][a] += 1;
+							table[0][N][a] += 1;
 						}
 						if (b == mmax || b == mmin)
 						{
@@ -134,7 +134,7 @@ int main() {
 	for (int person = 0; person < PC; ++person)
 	{
 		printf("for %c\n", 'A'+person);
-		for (int left = 0; left < N; ++left)
+		for (int left = 0; left <= N; ++left)
 		{
 			printf("left %d\n", left);
 			for (int choice = 1; choice < N; ++choice)
@@ -149,62 +149,22 @@ int main() {
 	}
 	int max_choice = 0;
 	int max = 0;
-	for (int choice = 0; choice < N; ++choice)
+	left = N;
+	for (int person = 0; person < PC; ++person)
 	{
-		int live = table[0][0][choice];
-		if (live > max)
+		left -= max_choice;
+		printf("%d left for %c\n", left, 'A'+person);
+		max = 0;
+		for (int choice = 0; choice < N; ++choice)
 		{
-			max_choice = choice;
-			max = live;
+			int live = table[person][left][choice];
+			// printf("live %d when %d\n", live, choice);
+			if (live > max)
+			{
+				max_choice = choice;
+				max = live;
+			}
 		}
+		printf("%c will chose %d\n", person+'A', max_choice);
 	}
-	printf("A will chose %d\n", max_choice);
-	int last_choice = max_choice;
-	max = 0;
-	for (int choice = 0; choice < N; ++choice)
-	{
-		int live = table[1][N - last_choice][choice];
-		if (live > max)
-		{
-			max_choice = choice;
-			max = live;
-		}
-	}
-	printf("B will chose %d\n", max_choice);
-	last_choice = max_choice;
-	max = 0;
-	for (int choice = 0; choice < N; ++choice)
-	{
-		int live = table[2][N - last_choice][choice];
-		if (live > max)
-		{
-			max_choice = choice;
-			max = live;
-		}
-	}
-	printf("C will chose %d\n", max_choice);
-	last_choice = max_choice;
-	max = 0;
-	for (int choice = 0; choice < N; ++choice)
-	{
-		int live = table[3][N - last_choice][choice];
-		if (live > max)
-		{
-			max_choice = choice;
-			max = live;
-		}
-	}
-	printf("D will chose %d\n", max_choice);
-	last_choice = max_choice;
-	max = 0;
-	for (int choice = 0; choice < N; ++choice)
-	{
-		int live = table[4][N - last_choice][choice];
-		if (live > max)
-		{
-			max_choice = choice;
-			max = live;
-		}
-	}
-	printf("E will chose %d\n", max_choice);
 }
