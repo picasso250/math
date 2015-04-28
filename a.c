@@ -4,7 +4,7 @@
 #define DEBUG 1
 
 #define choice_push(a,b,c,d,e) choice[0]=a;choice[1]=b;choice[2]=c;choice[3]=d;choice[4]=e
-#define N 50
+#define N 100
 #define PC 5
 
 int sum(int choice[])
@@ -173,14 +173,38 @@ int main() {
 	printf("B will chose %d\n", max_choice);
 	last_choice = max_choice;
 	max = 0;
-	// for (int choice = 0; choice < N; ++choice)
-	// {
-	// 	int live = table[2][N - last_choice][choice];
-	// 	if (live > max)
-	// 	{
-	// 		max_choice = choice;
-	// 		max = live;
-	// 	}
-	// }
-	// printf("C will chose %d\n", max_choice);
+	for (int choice = 0; choice < N; ++choice)
+	{
+		int live = table[2][N - last_choice][choice];
+		if (live > max)
+		{
+			max_choice = choice;
+			max = live;
+		}
+	}
+	printf("C will chose %d\n", max_choice);
+	last_choice = max_choice;
+	max = 0;
+	for (int choice = 0; choice < N; ++choice)
+	{
+		int live = table[3][N - last_choice][choice];
+		if (live > max)
+		{
+			max_choice = choice;
+			max = live;
+		}
+	}
+	printf("D will chose %d\n", max_choice);
+	last_choice = max_choice;
+	max = 0;
+	for (int choice = 0; choice < N; ++choice)
+	{
+		int live = table[4][N - last_choice][choice];
+		if (live > max)
+		{
+			max_choice = choice;
+			max = live;
+		}
+	}
+	printf("E will chose %d\n", max_choice);
 }
