@@ -1,4 +1,4 @@
-import random
+import random # 其实没必要使用这个库，但是使用了可以增加些许的趣味性
 
 max_number = 2 << 10
 min_number = 0
@@ -17,7 +17,7 @@ def bigger(guess):
 
 
 print("请在脑中想一个0-"+str(max_number)+"的整数（我能在12次之内猜中它）")
-guess = random.randint(0, max_number)
+guess = random.randint(0, max_number) # 这里没必要使用random库，可以直接  guess=int(max_number/2)
 a = None
 while a != "是":
     a = input("是"+str(guess)+"吗？是/大了/小了？")
